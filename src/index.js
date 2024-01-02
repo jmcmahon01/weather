@@ -13,7 +13,7 @@ function getWeather(city) {
     if (this.status === 200) {
       printElements(response, city);
     } else {
-      printError(this, city);
+      printError(this, response, city);
     }
   });
 
@@ -23,8 +23,8 @@ function getWeather(city) {
 
 // UI Logic
 
-function printError(request, city) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the weather data for ${city}:  ${request.status} ${request.statusText}`;
+function printError(request, apiResponse, city) {
+  document.querySelector('#showResponse').innerText = `There was an error accessing the weather data for ${city}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
 }
 
 function printElements(apiResponse, city) {
