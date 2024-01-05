@@ -5,15 +5,13 @@ import WeatherService from './weather-service.js';
 
 // Business Logic
 
-function getWeather(city) {
-  WeatherService.getWeather(city)
-    .then(function (response) {
-      if (response.main) {
-        printElements(response, city);
-      } else {
-        printError(response, city);
-      }
-    });
+async function getWeather(city) {
+  const response = await WeatherService.getWeather(city);
+  if (response.main) {
+    printElements(response, city);
+  } else {
+    printError(response, city);
+  }
 }
 
 // UI Logic
