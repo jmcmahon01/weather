@@ -20,18 +20,18 @@ function getWeather(city) {
     request.send();
   });
 
-  promise.then(function (response) {
-    printElements(response);
-  }, function (errorMessage) {
-    printError(errorMessage);
+  promise.then(function (weatherDataArray) {
+    printElements(weatherDataArray);
+  }, function (errorArray) {
+    printError(errorArray);
   });
 }
 
 // UI Logic
 
-function printElements(results) {
-  document.querySelector('#showResponse').innerText = `The humidity in ${results[1]} is ${results[0].main.humidity}%.
-  The temperature in Kelvins is ${results[0].main.temp} degrees.`;
+function printElements(data) {
+  document.querySelector('#showResponse').innerText = `The humidity in ${data[1]} is ${data[0].main.humidity}%.
+  The temperature in Kelvins is ${data[0].main.temp} degrees.`;
 }
 
 function printError(error) {
